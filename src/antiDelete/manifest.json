@@ -23,13 +23,6 @@
       "advice": "none",
       "default": true
     },
-    "collapse": {
-      "displayName": "Collapse deleted messages",
-      "description": "Makes deleted messages collapsed like blocked/ignored messages",
-      "type": "boolean",
-      "advice": "none",
-      "default": false
-    },
     "ignoreSelf": {
       "displayName": "Ignore own messages",
       "type": "boolean",
