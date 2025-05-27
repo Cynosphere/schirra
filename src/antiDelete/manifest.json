@@ -1,0 +1,72 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "antiDelete",
+  "version": "1.0.0",
+  "meta": {
+    "name": "Anti-Delete",
+    "tagline": "Temporarily keep edits and deleted messages",
+    "authors": ["Cynosphere"],
+    "tags": ["dangerZone"],
+    "source": "https://github.com/Cynosphere/schirra",
+    "donate": "https://ko-fi.com/Cynosphere"
+  },
+  "settings": {
+    "deletes": {
+      "displayName": "Keep Deletes",
+      "type": "boolean",
+      "advice": "none",
+      "default": true
+    },
+    "edits": {
+      "displayName": "Keep Edits",
+      "type": "boolean",
+      "advice": "none",
+      "default": true
+    },
+    "collapse": {
+      "displayName": "Collapse deleted messages",
+      "description": "Makes deleted messages collapsed like blocked/ignored messages",
+      "type": "boolean",
+      "advice": "none",
+      "default": false
+    },
+    "ignoreSelf": {
+      "displayName": "Ignore own messages",
+      "type": "boolean",
+      "advice": "none",
+      "default": false
+    },
+    "ignoreBots": {
+      "displayName": "Ignore Bots",
+      "type": "boolean",
+      "advice": "none",
+      "default": false
+    },
+    "ignoredUsers": {
+      "displayName": "Ignored Users",
+      "type": "list",
+      "advice": "none"
+    },
+    "ignoredChannels": {
+      "displayName": "Ignored Channels",
+      "type": "list",
+      "advice": "none"
+    },
+    "ignorePluralKit": {
+      "displayName": "Ignore PluralKit deletes via request",
+      "description": "Requires making a request to PluralKit's API every delete.",
+      "type": "boolean",
+      "advice": "none",
+      "default": false
+    },
+    "ignorePluralKitPrefix": {
+      "displayName": "Ignore PluralKit deletes via prefix",
+      "description": "Differentiates the content between the deleted message and a nearby bot message to determine.",
+      "type": "boolean",
+      "advice": "none",
+      "default": true
+    }
+  },
+  "dependencies": ["common", "spacepack"],
+  "apiLevel": 2
+}

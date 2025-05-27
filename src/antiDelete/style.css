@@ -1,0 +1,27 @@
+.antiDelete-deleted {
+  background-color: var(--background-message-automod);
+
+  &:hover {
+    background-color: var(--background-message-automod-hover);
+  }
+
+  &::before {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    background-color: var(--text-danger);
+  }
+}
+
+.antiDelete-footer span[class^="timestamp_"] {
+  margin-left: 0;
+}
+
+.antiDelete-edit {
+  opacity: 0.5;
+}
