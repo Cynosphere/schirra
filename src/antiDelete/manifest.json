@@ -1,14 +1,15 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "antiDelete",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "meta": {
     "name": "Anti-Delete",
     "tagline": "Temporarily keep edits and deleted messages",
     "authors": ["Cynosphere"],
     "tags": ["dangerZone"],
     "source": "https://github.com/Cynosphere/schirra",
-    "donate": "https://ko-fi.com/Cynosphere"
+    "donate": "https://ko-fi.com/Cynosphere",
+    "changelog": "Use `includes` instead of `endsWith` for PluralKit detection"
   },
   "settings": {
     "deletes": {

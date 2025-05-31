@@ -137,7 +137,7 @@ Dispatcher.addInterceptor((event) => {
         const triggerContent = message.content;
         const lengthMin = triggerContent.length - MAX_TRIM;
         for (const botMessage of possiblePluralKitMessages) {
-          if (botMessage.content.length > lengthMin && triggerContent.endsWith(botMessage.content)) {
+          if (botMessage.content.length > lengthMin && triggerContent.includes(botMessage.content)) {
             return false;
           }
         }
