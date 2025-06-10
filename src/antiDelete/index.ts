@@ -146,14 +146,9 @@ export const patches: Patch[] = [
     find: ".mosaicItemContent,{",
     replace: [
       {
-        match:
-          /,(\i)=(\i\(\i,\(0,\i\.\i\)\((\i)\.channel_id,\i\.author\.id\)\)),(\[(\i),(\i)]=\i\.useState\(null!=\i\)),/,
+        match: /,(\i)=(\i\(\i,\(0,\i\.\i\)\((\i)\)\)),(\[(\i),(\i)]=\i\.useState\(null!=\i&&\i\.\i\.has\(\i\)\);)/,
         replacement: (_, obscureReason, orig, message, state, obscured, setObscured) =>
-          `,_obscureReason=${orig},${obscureReason}=${message}.deleted?"antidelete":_obscureReason,${state};if(${message}.deleted&&${obscured}===false)${setObscured}(true);let `
-      },
-      {
-        match: ".POTENTIAL_EXPLICIT_CONTENT].includes(",
-        replacement: '.POTENTIAL_EXPLICIT_CONTENT,"antidelete"].includes('
+          `,_obscureReason=${orig},${obscureReason}=${message}.deleted?"antidelete":_obscureReason,${state}if(${message}.deleted&&${obscured}===false)${setObscured}(true);`
       }
     ]
   },
@@ -163,10 +158,6 @@ export const patches: Patch[] = [
     find: "renderObscuredAttachment(){",
     replace: [
       {
-        match: /\.POTENTIAL_EXPLICIT_CONTENT]\.includes\(/g,
-        replacement: '.POTENTIAL_EXPLICIT_CONTENT,"antidelete"].includes('
-      },
-      {
         match: /,\i(?=\?null:\(0,\i\.jsx\)\(\i,{obscureReason:(\i),)/g,
         replacement: (orig, obscureReason) => `${orig}&&${obscureReason}!=="antidelete"`
       },
@@ -175,16 +166,16 @@ export const patches: Patch[] = [
         replacement: (orig: string) => `${orig}case "antidelete":`
       },
       {
-        match: /return (\i)!==(\i\.\i\.EXPLICIT_CONTENT)\?null:/,
-        replacement: (_, reason, explicit) => `return ${reason}!==${explicit}&&${reason}!=="antidelete"?null:`
+        match: /return (\i)!==(\i\.\i\.EXPLICIT_CONTENT)&&/,
+        replacement: (_, reason, explicit) => `return ${reason}!==${explicit}&&${reason}!=="antidelete"&&`
       }
     ]
   },
   {
-    find: ".embedAuthorIcon,src:",
+    find: 'new Set(["explicit_content","gore_content","potential_explicit_content"])',
     replace: {
-      match: /\.POTENTIAL_EXPLICIT_CONTENT]\.includes\(/g,
-      replacement: '.POTENTIAL_EXPLICIT_CONTENT,"antidelete"].includes('
+      match: ',"potential_explicit_content"',
+      replacement: ',"potential_explicit_content","antidelete"'
     }
   }
 ];
