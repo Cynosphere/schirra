@@ -1,7 +1,7 @@
 {
   "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
   "id": "antiDelete",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "meta": {
     "name": "Anti-Delete",
     "tagline": "Temporarily keep edits and deleted messages",

@@ -146,9 +146,9 @@ export const patches: Patch[] = [
     find: ".mosaicItemContent,{",
     replace: [
       {
-        match: /,(\i)=(\i\(\i,\(0,\i\.\i\)\((\i)\)\)),(\[(\i),(\i)]=\i\.useState\(null!=\i&&\i\.\i\.has\(\i\)\);)/,
+        match: /,(\i)=(\i\(\i,\(0,\i\.\i\)\((\i)\)\)),(\[(\i),(\i)]=\i\.useState\(null!=\i\)),/,
         replacement: (_, obscureReason, orig, message, state, obscured, setObscured) =>
-          `,_obscureReason=${orig},${obscureReason}=${message}.deleted?"antidelete":_obscureReason,${state}if(${message}.deleted&&${obscured}===false)${setObscured}(true);`
+          `,_obscureReason=${orig},${obscureReason}=${message}.deleted?"antidelete":_obscureReason,${state};if(${message}.deleted&&${obscured}===false)${setObscured}(true);let `
       }
     ]
   },
