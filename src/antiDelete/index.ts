@@ -120,6 +120,12 @@ export const patches: Patch[] = [
       {
         match: "{shouldRedactExplicitContent:",
         replacement: (orig: string) => `${orig}arguments[0].deleted?true:`
+      },
+
+      // Unrender coded links
+      {
+        match: /renderCodedLinks\((\i)\){return/,
+        replacement: (orig, message) => `${orig} ${message}.deleted?null:`
       }
     ]
   },

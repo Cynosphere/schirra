@@ -164,10 +164,11 @@ Dispatcher.addInterceptor((event) => {
       const oldMessage = messages.get(event.message.id);
       if (!oldMessage) return false;
 
+      event.message.edits = oldMessage.edits ?? [];
+
       // TODO: embed diffing as small text, maybe also SUPPRESS_EMBEDS and other flags idk
       if (oldMessage.content === event.message.content) return false;
 
-      event.message.edits = oldMessage.edits ?? [];
       event.message.edits.push({
         content: oldMessage.content,
         timestamp: oldMessage.editedTimestamp ?? oldMessage.timestamp,
