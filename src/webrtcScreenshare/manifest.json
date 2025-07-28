@@ -1,0 +1,19 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "webrtcScreenshare",
+  "apiLevel": 2,
+  "environment": "desktop",
+  "meta": {
+    "name": "WebRTC Screenshare",
+    "tagline": "Use the WebRTC media engine used for web combined with venmic for an alternative screensharing method",
+    "description": "This is basically just the screenshare patches from rocketship gutted into its own extension and then some.\n\nYou'll have to provide your own copy of venmic (optional)\n(download latest Vesktop release .tar.gz and extract it from `resources/app.asar/static/dist`)\n(Flatpak installs should put venmic in `~/.config/moonlight-mod` and grant permission to `xdg-run/pipewire-0`)",
+    "authors": ["NotNite", "Cynosphere", "adryd"]
+  },
+  "settings": {
+    "venmicPath": {
+      "type": "string",
+      "displayName": "Path to venmic",
+      "advice": "restart"
+    }
+  }
+}
