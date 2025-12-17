@@ -57,7 +57,7 @@ export const patches: Patch[] = [
 
   // Give minimal message actions/context menu for deleted
   {
-    find: "MESSAGE_POPOUT_MENU_OPENED_DESKTOP,{",
+    find: 'navId:"message-actions",',
     replace: [
       {
         match: /(\i)\.state===\i\.\i\.SEND_FAILED/,
@@ -178,7 +178,7 @@ export const patches: Patch[] = [
     ]
   },
   {
-    find: 'new Set(["explicit_content","gore_content","potential_explicit_content"])',
+    find: 'new Set(["explicit_content",',
     replace: {
       match: ',"potential_explicit_content"',
       replacement: ',"potential_explicit_content","antidelete"'

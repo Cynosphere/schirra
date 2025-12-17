@@ -1,8 +1,8 @@
 .antiDelete-deleted {
-  background-color: var(--background-message-automod);
+  background-color: var(--message-automod-background-default);
 
   &:hover {
-    background-color: var(--background-message-automod-hover);
+    background-color: var(--message-automod-background-hover);
   }
 
   &::before {
@@ -14,11 +14,11 @@
     position: absolute;
     top: 0;
     width: 2px;
-    background-color: var(--text-danger);
+    background-color: var(--status-danger);
   }
 }
 
-.antiDelete-footer span[class^="timestamp_"] {
+.antiDelete-footer span[class*="-timestamp"] {
   margin-left: 0;
 }
 
