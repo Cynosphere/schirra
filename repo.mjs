@@ -1,6 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
 import asar from "@electron/asar";
-import fs from "fs";
-import path from "path";
 
 const extensions = fs.readdirSync("./dist");
 const repo = [];

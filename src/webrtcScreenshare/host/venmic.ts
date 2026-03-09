@@ -1,6 +1,6 @@
 import type { BrowserWindow } from "electron";
 import { app, desktopCapturer } from "electron";
-import { type PatchBay } from "./types";
+import type { PatchBay } from "./types";
 
 const logger = moonlightHost.getLogger("WebRTC Screenshare");
 
@@ -59,7 +59,7 @@ moonlightHost.events.on("window-created", (window: BrowserWindow, isMainWindow: 
 
   // @ts-expect-error these types ancient
   windowSession.setDisplayMediaRequestHandler(
-    (request: any, callback: any) => {
+    (_request: any, callback: any) => {
       const linked = linkVenmic();
       desktopCapturer.getSources({ types: ["screen", "window"] }).then((sources) => {
         //logger.debug("desktopCapturer.getSources", sources);

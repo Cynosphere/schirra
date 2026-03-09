@@ -1,8 +1,7 @@
-import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
-
-import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import { AuthenticationStore } from "@moonlight-mod/wp/common_stores";
 import { MessageFlags } from "@moonlight-mod/wp/discord/Constants";
+import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
+import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 
 const ChannelMessages = spacepack.require("discord/lib/ChannelMessages").default;
 const tinycolor = spacepack.require("ctrl/tinycolor");
@@ -23,16 +22,16 @@ function jsonifyMessage(message: any) {
   messageJson.message_snapshots = messageJson.messageSnapshots;
 
   if (messageJson.embeds?.length > 0) {
-    let elem;
+    let elem: HTMLDivElement | undefined;
     if (document?.body) {
       elem = document.createElement("div");
       document.body.appendChild(elem);
     }
 
     for (const embed of messageJson.embeds) {
-      if (elem && embed.color) {
+      if (elem != null && embed.color) {
         elem.style.color = embed.color;
-        embed.color = parseInt(`0x${tinycolor(window.getComputedStyle(elem).color).toHex()}`);
+        embed.color = parseInt(`0x${tinycolor(window.getComputedStyle(elem).color).toHex()}`, 10);
       }
 
       embed.description = embed.rawDescription;
@@ -69,7 +68,11 @@ function jsonifyMessage(message: any) {
         for (const index in embed.images) {
           if (index === "0") continue;
 
-          messageJson.embeds.push({ ...embed, image: embed.images[index], _antiDelete_unfurl: true });
+          messageJson.embeds.push({
+            ...embed,
+            image: embed.images[index],
+            _antiDelete_unfurl: true
+          });
         }
       }
     }
@@ -115,7 +118,7 @@ Dispatcher.addInterceptor((event) => {
       if (message.flags & MessageFlags.EPHEMERAL) return false;
 
       if (ignorePluralKit) {
-        fetch("https://api.pluralkit.me/v2/messages/" + encodeURIComponent(event.id))
+        fetch(`https://api.pluralkit.me/v2/messages/${encodeURIComponent(event.id)}`)
           .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
           .then((data) => {
             if (data.original === event.id && !data.member?.keep_proxy) {

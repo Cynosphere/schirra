@@ -1,4 +1,4 @@
-import { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
+import type { ExtensionWebpackModule, Patch } from "@moonlight-mod/types";
 
 export const patches: Patch[] = [
   // Message record
@@ -41,7 +41,7 @@ export const patches: Patch[] = [
   {
     find: '"Message must not be a thread starter message"',
     replace: {
-      match: /\[\i\.mentioned\]:(\i)\.mentioned,/g,
+      match: /\[\i\.\i\]:(\i)\.mentioned,/g,
       replacement: (orig, message) => `${orig}"antiDelete-deleted":${message}.deleted,`
     }
   },
@@ -132,7 +132,7 @@ export const patches: Patch[] = [
 
   // Edits
   {
-    find: ".isFailed]:",
+    find: ".isUnsupported}),",
     replace: [
       {
         match: /\["message"]\)&&(\i)\.content===(\i)\.content/,
@@ -149,7 +149,7 @@ export const patches: Patch[] = [
 
   // Attachments need a bit of extra effort to force obscure
   {
-    find: ".mosaicItemContent,{",
+    find: '["VIDEO","CLIP","AUDIO"].includes(',
     replace: [
       {
         match: /,(\i)=(\i\(\i,\(0,\i\.\i\)\((\i)\)\)),(\[(\i),(\i)]=\i\.useState\(null!=\i\)),/,

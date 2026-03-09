@@ -1,4 +1,4 @@
-.antiDelete-deleted {
+div.antiDelete-deleted {
   background-color: var(--message-automod-background-default);
 
   &:hover {
@@ -18,10 +18,10 @@
   }
 }
 
-.antiDelete-footer span[class*="-timestamp"] {
+div.antiDelete-footer > span[class*="-timestamp"] {
   margin-left: 0;
 }
 
-.antiDelete-edit {
+div.antiDelete-edit {
   opacity: 0.5;
 }

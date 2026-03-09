@@ -1,0 +1,4 @@
+packages:
+  - "src/*"
+onlyBuiltDependencies:
+  - "@moonlight-mod/esbuild-config"
