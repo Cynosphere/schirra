@@ -1,4 +1,4 @@
-import { TrashIcon } from "@moonlight-mod/wp/discord/components/common/index";
+import TrashIcon from "@moonlight-mod/wp/discord/modules/icons/web/TrashIcon";
 import React from "@moonlight-mod/wp/react";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
 

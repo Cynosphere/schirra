@@ -204,7 +204,7 @@ export const webpackModules: Record<string, ExtensionWebpackModule> = {
       { id: "react" },
       { ext: "spacepack", id: "spacepack" },
       { id: "discord/modules/messages/web/TimestampTooltip" },
-      { id: "discord/components/common/index" },
+      { id: "discord/modules/icons/web/TrashIcon" },
       { id: "discord/actions/MessageActionCreators" }
     ]
   },
