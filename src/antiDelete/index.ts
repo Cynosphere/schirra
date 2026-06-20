@@ -85,8 +85,9 @@ export const patches: Patch[] = [
     find: "discord/actions/MessageActionCreators",
     replace: [
       {
-        match: 'type:"MESSAGE_DELETE",id:',
-        replacement: 'type:"MESSAGE_DELETE",_antiDelete_force:arguments[3],id:'
+        match: /(function \i\(\){\i\.\i\.dispatch\({)type:"MESSAGE_DELETE",id:/,
+        replacement: (_, orig) =>
+          `let _antiDelete_force=arguments[3];${orig}type:"MESSAGE_DELETE",_antiDelete_force,id:`
       },
       {
         match: /(?<=dismissAutomatedMessage\((\i)\){.+?this\.deleteMessage\(\i\.channel_id,\i\.id,)!0\)},/,
